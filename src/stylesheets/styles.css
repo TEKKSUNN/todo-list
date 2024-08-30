@@ -1,0 +1,18 @@
+@import url("../fonts/Roboto-Font/stylesheet.css");
+@import url("../fonts/alex-brush/stylesheet.css");
+
+:root {
+    --main-color: #222831;
+    --secondary-color: #393E46;
+    --tertiary-color: #00ADB5;
+    --quaternary-color: #EEEEEE; 
+}
+
+body {
+    height: 100vh;
+    width: auto;
+    background-color: var(--quaternary-color);
+    overflow: hidden;
+    margin: 0;
+    padding: 0;
+}
