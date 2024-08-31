@@ -5,7 +5,13 @@
     --main-color: #222831;
     --secondary-color: #393E46;
     --tertiary-color: #00ADB5;
-    --quaternary-color: #EEEEEE; 
+    --quaternary-color: #EEEEEE;
+    --logo-color: #FFC90E; 
+    --pad-height: 8px;
+    --pad-width: 16px;
+    --pad-neg-height: calc(var(--pad-height) - (var(--pad-height) * 2));
+    --pad-neg-width: calc(var(--pad-width) - (var(--pad-width) * 2));
+    --mild-shadow: 5px 5px 10px rgba(0, 0, 0, 0.25);
 }
 
 body {
@@ -15,4 +21,103 @@ body {
     overflow: hidden;
     margin: 0;
     padding: 0;
+    grid-template: max-content 1fr max-content / 1fr;
+    grid-template-areas:
+        "header"
+        "content"
+        "footer";
+}
+
+* {
+    padding: 0;
+    margin: 0;
+}
+
+.web-info {
+    display: flex;
+    align-items: center;
+    cursor: pointer;
+}
+
+.web-logo {
+    height: 48px;
+    width: 48px;
+    position: relative;
+    top: -4px;
+}
+
+.web-title {
+    font-family: 'alex_brushregular', sans-serif;
+    color: var(--logo-color);
+    font-size: 48px;
+}
+
+header {
+    grid-area: header;
+    background-image: linear-gradient(var(--main-color), var(--secondary-color));
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: var(--pad-height) var(--pad-width);
+    box-shadow: var(--mild-shadow);
+}
+
+.tabs {
+    align-self: flex-end;
+    position: relative;
+    bottom: var(--pad-neg-height);
+    display: flex;
+    gap: var(--pad-width);
+}
+
+.tab {
+    font-family: 'robotothin', sans-serif;
+    font-size: 24px;
+    border: 0;
+    background-color: transparent;
+    padding-bottom: var(--pad-height);
+    color: var(--quaternary-color);
+    margin-bottom: 2px;
+}
+
+.tab:not(.active-tab):hover,
+.active-tab {
+    color: var(--logo-color);
+    border-bottom: 1px solid var(--logo-color);
+    margin-bottom: 1px;
+    text-shadow: var(--mild-shadow);
+} 
+
+.active-tab {
+    cursor: auto;
+}
+
+button {
+    cursor: pointer;
+}
+
+button:not(.tab):hover {
+    box-shadow: var(--mild-shadow);
+}
+
+button.new-project {
+    border: 0;
+    padding: var(--pad-height) var(--pad-width);
+    border-radius: 25px;
+    font-family: 'robotobold', sans-serif;
+    background-color: var(--secondary-color);
+    color: var(--quaternary-color);
+}
+
+button.new-project:hover {
+    background-color: var(--logo-color);
+    text-shadow: var(--mild-shadow);
+}
+
+div#content {
+    grid-area: content;
+}
+
+footer {
+    grid-area: footer;
 }
