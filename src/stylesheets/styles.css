@@ -112,6 +112,7 @@ button.new-project {
 button.new-project:hover {
     background-color: var(--logo-color);
     text-shadow: var(--mild-shadow);
+    color: var(--secondary-color);
 }
 
 div#content {
