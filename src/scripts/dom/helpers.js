@@ -46,4 +46,6 @@ export const appendTo = function(parentElement, ...childElements) {
     });
 }
 
+export const getAllTabs = new Query(".tab").getAll;
+
 export const getHeader = new Query("header").get;
