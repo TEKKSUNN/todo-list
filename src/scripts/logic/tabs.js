@@ -1,4 +1,4 @@
-import { createDiv, createButton, appendTo, getAllTabs } from "./helpers";
+import { createDiv, createButton, appendTo, getAllTabs } from "../dom/helpers";
 
 const createTab = (content) => createButton("tab", `${content}`);
 

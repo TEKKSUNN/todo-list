@@ -1,5 +1,5 @@
 import { getHeader, createText, createImage, createDiv, appendTo } from "./helpers";
-import getTabs from "./tabs";
+import getTabs from "../logic/tabs";
 import { getProjectButton } from "./buttons";
 
 import WebsiteLogo from "../../images/logo.png";
