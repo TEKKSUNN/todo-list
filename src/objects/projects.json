@@ -1,26 +1,26 @@
-{
-    "0" : {
+[
+    {
         "title": "To-Do List",
         "description": "Make a to-do list app",
-        "tasks": {
-            "0": {
+        "tasks": [
+            {
                 "task": "Setup webpack",
                 "dueDate": "08/31/2024 10:30PM",
                 "priority": "high"
             },
-            "1": {
+            {
                 "task": "Finish Project",
                 "dueDate":"08/31/2024 10:30PM",
                 "priority": "high"
             },
-            "2": {
+            {
                 "task": "Submit Project",
                 "dueDate":"08/31/2024 10:30PM",
                 "priority": "high"
             }
-        },
+        ],
         "dueDate": "08/31/2024 10:30PM",
         "repeats": "none",
         "notes": "This is a project for \"The Odin Project\"s online curriculum."
     }
-}
+]
