@@ -199,3 +199,8 @@ label {
     align-self: flex-end;
     padding: 8px 16px;
 }
+
+dialog .add-button:hover,
+dialog .cancel-btn:hover {
+    box-shadow: none;
+}
