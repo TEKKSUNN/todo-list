@@ -1,4 +1,5 @@
-import { getHeader, createText, createImage, createDiv, appendTo } from "./helpers";
+import { getHeader, createText, createImage, createDiv, appendTo, handleClick } from "./helpers";
+import { showProjectDialog } from "./dialogs";
 import getTabs from "../logic/tabs";
 import { getProjectButton } from "./buttons";
 
@@ -15,6 +16,7 @@ export default function loadHeader() {
     const tabs = getTabs();
 
     const newProjectButton = getProjectButton();
+    handleClick(showProjectDialog, newProjectButton);
 
     appendTo(header, websiteInfo, tabs, newProjectButton);
 }
