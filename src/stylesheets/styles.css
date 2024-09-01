@@ -21,6 +21,10 @@ body {
     overflow: hidden;
     margin: 0;
     padding: 0;
+}
+
+#container {
+    display: grid;
     grid-template: max-content 1fr max-content / 1fr;
     grid-template-areas:
         "header"
@@ -94,6 +98,7 @@ header {
 
 button {
     cursor: pointer;
+    font-family: 'robotobold', sans-serif;
 }
 
 button:not(.tab):hover {
@@ -121,4 +126,39 @@ div#content {
 
 footer {
     grid-area: footer;
+}
+
+dialog {
+    margin: auto;
+    padding: var(--pad-height) var(--pad-width);
+    overflow: visible;
+    border: 2px solid black;
+    border-radius: 5px;
+    background-color: var(--quaternary-color);
+}
+
+dialog::backdrop {
+    background-color: rgba(0, 0, 0, 0.10);
+}
+
+form {
+    display: flex;
+    flex-direction: column;
+}
+
+.cancel-btn {
+    position: absolute;
+    --square-pad: 5px;
+    --neg-square-pad: -8px;
+    top: var(--neg-square-pad);
+    right: var(--neg-square-pad);
+    padding: 0 var(--square-pad);
+    border-radius: 10px;
+    background-color: hsl(0, 50%, 50%);
+    border: 2px solid black;
+}
+
+input[type="text"] {
+    border: 0;
+    border-bottom: 1px solid black;
 }
