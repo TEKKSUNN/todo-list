@@ -52,21 +52,28 @@ const createProjectDialog = function() {
     const dialog = genericDialog("add-new", "add-project");
     const form = createForm("add-form", "new-project");
     const text = createText("form-title", "Add New Project", "h2");
+    const titleGroup = createDiv("group title-group");
     const titleLabel = createLabel("Title:", "title-input", "project-label");
     const titleInput = createRequiredInput("text", "title-input", "project-input required");
+    appendTo(titleGroup, titleLabel, titleInput);
+    const descGroup = createDiv("group desc-group");
     const descLabel = createLabel("Description:", "desc-input", "project-label");
-    const descInput = createInput("textbox", "desc-input", "project-input");
+    const descInput = createInput("text", "desc-input", "project-input");
+    appendTo(descGroup, descLabel, descInput);
+    const dueDateGroup = createDiv("group due-date-group");
     const dueDateLabel = createLabel("Due Date:", "due-date-input", "project-label");
     const dueDate = createInput("datetime-local", "due-date-input", "project-input");
+    appendTo(dueDateGroup, dueDateLabel, dueDate);
+    const repeatGroup = createDiv("group repeat-group");
     const repeatLabel = createLabel("Repeats:", "repeat-input", "project-label");
     const repeatSelection = createSelection("project-input", "repeat-input", "None", "Daily",
         "Weekly", "Monthly", "Yearly"
     );
+    appendTo(repeatGroup, repeatLabel, repeatSelection);
     addRequired(repeatSelection);
     const submitButton = createSubmitButton("Add", "add-button project-submit");
     handleSubmit(addNewProject, form);
-    appendTo(form, text, titleLabel, titleInput, descLabel, descInput, dueDateLabel, dueDate,
-        repeatLabel, repeatSelection, submitButton);
+    appendTo(form, text, titleGroup, descGroup, dueDateGroup, repeatGroup, submitButton);
     appendTo(dialog, form);
     return dialog;
 }
