@@ -10,5 +10,11 @@ export const Project = (function() {
             repeats: getRepeats()
         };
     }
-    return { getTitle, getDesc, getDueDate, getRepeats, extractValues };
+    const extractAllValues = function() {
+        let values = extractValues();
+        values.tasks = [];
+        values.notes = "";
+        return values;
+    }
+    return { getTitle, getDesc, getDueDate, getRepeats, extractValues, extractAllValues };
 })();
