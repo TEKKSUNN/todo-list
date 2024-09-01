@@ -160,6 +160,11 @@ form {
     border: 2px solid black;
 }
 
+input,
+select {
+    font-size: 14px;
+}
+
 input[type="text"] {
     border: 0;
     background-color: var(--quaternary-color);
@@ -173,8 +178,24 @@ input {
 .group {
     display: flex;
     justify-content: flex-end;
+    gap: 8px;
 }
 
-.group > * {
+label,
+.form-title {
+    font-family: 'robotobold';
+}
+
+label {
+    font-size: 18px;
+}
+
+.group > :not(label) {
     width: 50%;
+}
+
+.add-button {
+    border-radius: 5px;
+    align-self: flex-end;
+    padding: 8px 16px;
 }
