@@ -18,7 +18,7 @@ export const Project = (function() {
     const getDueDate = () => formatDate(getValue("#due-date-input"));
     const getRepeats = () => getValue("#repeat-input");
     const extractValues = function() {
-        return { title: getTitle(), desc: getDesc(), dueDate: getDueDate(),
+        return { title: getTitle(), description: getDesc(), dueDate: getDueDate(),
             repeats: getRepeats()
         };
     }
