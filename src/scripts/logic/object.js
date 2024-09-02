@@ -2,6 +2,8 @@ import { Project } from "../dom/get";
 
 import getDefaultProject from "./default";
 
+import { closeDialogs } from "../dom/helpers";
+
 export const handleEmptyStorage = function() {
     if (localStorage.getItem("projects") === null) {
         localStorage.setItem("projects", JSON.stringify(getDefaultProject()));
