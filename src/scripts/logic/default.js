@@ -30,7 +30,6 @@ export default function getDefaultProject() {
                 }
             ],
             dueDate: DateVariable,
-            repeats: "none",
             notes: "This is a project for \"The Odin Project\"s online curriculum.",
             started: DateNow
         }

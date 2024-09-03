@@ -1,7 +1,7 @@
 import { handleSubmit } from "../logic/form";
 import { getDialogSpace, createDiv, createButton, createDialog, appendTo, createText,
     handleClick, showLastDialog, closeDialog, closeDialogs, createForm, createLabel,
-    createInput, createRequiredInput, createSelection, createSubmitButton, addRequired
+    createInput, createRequiredInput, createSubmitButton
  } from "./helpers";
 import { addNewProject } from "../logic/object"; 
 
@@ -64,16 +64,9 @@ const createProjectDialog = function() {
     const dueDateLabel = createLabel("Due Date:", "due-date-input", "project-label");
     const dueDate = createInput("datetime-local", "due-date-input", "project-input");
     appendTo(dueDateGroup, dueDateLabel, dueDate);
-    const repeatGroup = createDiv("group repeat-group");
-    const repeatLabel = createLabel("Repeats:", "repeat-input", "project-label");
-    const repeatSelection = createSelection("project-input", "repeat-input", "None", "Daily",
-        "Weekly", "Monthly", "Yearly"
-    );
-    appendTo(repeatGroup, repeatLabel, repeatSelection);
-    addRequired(repeatSelection);
     const submitButton = createSubmitButton("Add", "add-button project-submit");
     handleSubmit(addNewProject, form);
-    appendTo(form, text, titleGroup, descGroup, dueDateGroup, repeatGroup, submitButton);
+    appendTo(form, text, titleGroup, descGroup, dueDateGroup, submitButton);
     appendTo(dialog, form);
     return dialog;
 }

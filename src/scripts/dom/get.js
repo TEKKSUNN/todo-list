@@ -14,11 +14,8 @@ export const Project = (function() {
     const getTitle = () => getValue("#title-input");
     const getDesc = () => getValue("#desc-input");
     const getDueDate = () => formatDate(getValue("#due-date-input"));
-    const getRepeats = () => getValue("#repeat-input");
     const extractValues = function() {
-        return { title: getTitle(), description: getDesc(), dueDate: getDueDate(),
-            repeats: getRepeats()
-        };
+        return { title: getTitle(), description: getDesc(), dueDate: getDueDate() };
     }
     const extractAllValues = function() {
         let values = extractValues();
@@ -27,5 +24,5 @@ export const Project = (function() {
         values.started = formatDate(new Date());
         return values;
     }
-    return { getTitle, getDesc, getDueDate, getRepeats, extractValues, extractAllValues };
+    return { getTitle, getDesc, getDueDate, extractValues, extractAllValues };
 })();
