@@ -20,20 +20,19 @@ const setEvents = function(...elements) {
 
 export default function getTabs() {
     const tabs = createDiv("tabs");
-    const upcoming = createTab("Upcoming");
     const today = createTab("Today");
     const thisWeek = createTab("Week");
     const thisMonth = createTab("Month");
     const thisYear = createTab("Year");
     const allTime = createTab("All");
-    setIds(upcoming, today, thisWeek, thisMonth, thisYear, allTime);
-    setEvents(upcoming, today, thisWeek, thisMonth, thisYear, allTime);
+    setIds(today, thisWeek, thisMonth, thisYear, allTime);
+    setEvents(today, thisWeek, thisMonth, thisYear, allTime);
     handleClick(loadToday, today);
     handleClick(loadWeek, thisWeek);
     handleClick(loadMonth, thisMonth);
     handleClick(loadYear, thisYear);
     handleClick(loadAll, allTime);
-    appendTo(tabs, upcoming, today, thisWeek, thisMonth, thisYear, allTime);
+    appendTo(tabs, today, thisWeek, thisMonth, thisYear, allTime);
     return tabs;
 }
 
