@@ -5,6 +5,7 @@
     --main-color: #222831;
     --secondary-color: #393E46;
     --tertiary-color: #00ADB5;
+    --dark-tertiary-color: hsl(183, 100%, 25%);
     --quaternary-color: #EEEEEE;
     --logo-color: #FFC90E; 
     --pad-height: 8px;
@@ -203,4 +204,110 @@ label {
 dialog .add-button:hover,
 dialog .cancel-btn:hover {
     box-shadow: none;
+}
+
+#content {
+    display: grid;
+    grid-auto-rows: minmax(50px, 250px);
+    grid-template-columns: repeat(auto-fill, minmax(50px, 250px));
+    gap: 16px;
+    padding: 16px;
+    overflow: auto;
+}
+
+.project-card button {
+    height: 20px;
+    width: 20px;
+    border: 0;
+    background-size: 20px;
+    background-color: transparent;
+}
+
+.card-lower button:hover {
+    background-color: var(--dark-tertiary-color);
+    border-radius: 10px;
+    overflow: visible;
+}
+
+.project-card {
+    border-radius: 15px;
+    background-color: var(--tertiary-color);
+    color: var(--quaternary-color);
+    box-shadow: 5px 5px 10px rgba(0, 0, 0, 0.15);
+    overflow: auto;
+    display: flex;
+    flex-direction: column;
+}
+
+.project-card:hover {
+    box-shadow: var(--mild-shadow);
+}
+
+.view {
+    background-image: url("../images/view-project.png");
+}
+
+.project-add-task {
+    background-image: url("../images/add.png");
+}
+
+.project-notes {
+    background-image: url("../images/notes.png");
+}
+
+.card-upper {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: var(--pad-height);
+    background-color: var(--secondary-color);
+    border-radius: 15px;
+}
+
+.card-upper:hover,
+.card-lower:hover {
+    padding-bottom: var(--pad-height);
+}
+
+.card-upper:hover {
+    border-bottom: 5px solid var(--main-color);
+}
+
+.card-lower:hover {
+    border-bottom: 5px solid var(--dark-tertiary-color);
+}
+
+.card-lower {
+    display: flex;
+    flex-direction: column;
+    padding: var(--pad-height);
+    flex-grow: 1;
+    gap: 18px;
+    border-radius: 15px;
+    justify-content: space-between;
+}
+
+.card-upper,
+.card-lower {
+    padding-bottom: calc(var(--pad-height) + 5px);
+}
+
+.card-buttons {
+    align-self: flex-end;
+    display: flex;
+    gap: 4px;
+}
+
+.project-desc {
+    hyphens: auto;
+}
+
+.card-upper .delete {
+    background-image: url("../images/delete.png");
+    background-color: rgba(255, 68, 68, 0.5);
+    border-radius: 5px;
+}
+
+.card-upper .delete:hover {
+    background-color: rgb(255, 68, 68);
 }
