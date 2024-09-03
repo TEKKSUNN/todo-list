@@ -1,5 +1,6 @@
+import { boolChoiceDialog } from "../dom/dialogs";
 import { createDiv, createButton, appendTo, getAllTabs, createText, getContent, resetContent, handleClick } from "../dom/helpers";
-import { getMonthProjects, getProjects, getTodayProjects, getWeekProjects, getYearProjects } from "./object";
+import { getMonthProjects, getProjects, getProjectsLength, getTitleIndexOf, getTodayProjects, getWeekProjects, getYearProjects, handleDeleteProject } from "./object";
 
 const createTab = (content) => createButton("tab", `${content}`);
 
@@ -51,10 +52,13 @@ const content = getContent();
 
 const createProjectCard = function(project) {
     console.log(project);
+    const projectIndex = getTitleIndexOf(project.title);
     const projectCard = createDiv("project-card");
     const upperPart = createDiv("card-upper");
     const projectTitle = createText("project-title", project.title, "h3");
-    const deleteButton = createButton("delete delete-project", "");
+    const deleteButton = createButton(`delete delete-project-${projectIndex}`, "");
+    handleClick(() => boolChoiceDialog(`Are you sure you want to delete the \"${project.title}\" project?`,
+        () => { handleDeleteProject(document.querySelector(`.delete-project-${projectIndex}`)) }), deleteButton);
     appendTo(upperPart, projectTitle, deleteButton);
     const lowerPart = createDiv("card-lower");
     const projectDesc = createText("project-desc", project.description, "p");

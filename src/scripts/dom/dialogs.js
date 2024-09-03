@@ -28,7 +28,7 @@ const genericDialog = function(className, Id) {
     return dialog;
 }
 
-const boolChoiceDialog = function(question, nextStep) {
+export const boolChoiceDialog = function(question, nextStep) {
     const dialog = genericDialog("bool-dialog");
     const text = createText("question", `${question}`, "p");
     const choices = createDiv("choices");

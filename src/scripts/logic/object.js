@@ -11,13 +11,17 @@ export const handleEmptyStorage = function() {
     }
     else if (getProjects().length === 0) {
         const projects = getProjects();
-        projects.push(getDefaultProject());
+        projects.push(getDefaultProject()[0]);
         setProjects(projects);
     }
 }
 
 export const getProjects = function() {
-    return JSON.parse(localStorage.getItem("projects")).sort(compareDesc);
+    return JSON.parse(localStorage.getItem("projects"));
+}
+
+export const getProjectsLength = function() {
+    return getProjects().length;
 }
 
 const setProjects = function(newProjects) {
@@ -46,8 +50,9 @@ const includesTitle = function(title) {
 }
 
 const isBetween = function(newerDate, olderDate, dateForCompare) {
-    console.log(Date.parse(dateForCompare) >= Date.parse(olderDate), Date.parse(dateForCompare) <= Date.parse(newerDate));
-    console.log(formatDate(Date.parse(dateForCompare)), formatDate(Date.parse(newerDate)));
+    // console.log(Date.parse(dateForCompare) >= Date.parse(olderDate), Date.parse(dateForCompare) <= Date.parse(newerDate));
+    // console.log(formatDate(Date.parse(dateForCompare)), formatDate(Date.parse(newerDate)));
+    console.log(newerDate, olderDate, dateForCompare);
     return Date.parse(dateForCompare) >= Date.parse(olderDate) && Date.parse(dateForCompare) <= Date.parse(newerDate); 
 }
 
@@ -63,7 +68,9 @@ export const getTodayProjects = function() {
 export const getWeekProjects = function() {
     const projects = getProjects();
     const DateNow = new Date();
+    console.log(projects);
     const weekProjects = projects.filter((project) => {
+        console.log(project);
         return isBetween(DateNow, sub(DateNow, { weeks: 1 }), project.started);
     });
     return weekProjects;
@@ -91,4 +98,23 @@ export const removeProject = function(projectIndex) {
     const projects = getProjects();
     projects.splice(projectIndex, 1);
     setProjects(projects);
+}
+
+export const getTitleIndexOf = function(projectTitle) {
+    const projects = getProjects();
+    let res = null;
+    projects.forEach((project, index) => {
+        if (project.title === projectTitle) {
+            res = index;
+        }
+    });
+    return res;
+}
+
+export const handleDeleteProject = function(deleteButton) {
+    const projectTitle = Array.from(deleteButton.parentNode.getElementsByClassName("project-title"))[0].textContent;
+    console.log(deleteButton.parentNode);
+    if (includesTitle(projectTitle)) {
+        removeProject(getTitleIndexOf(projectTitle));
+    }
 }
