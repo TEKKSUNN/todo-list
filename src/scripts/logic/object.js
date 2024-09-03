@@ -4,6 +4,7 @@ import getDefaultProject from "./default";
 
 import { sub, compareDesc } from "date-fns";
 import { formatDate } from "./dates";
+import { loadToday } from "./tabs";
 
 export const handleEmptyStorage = function() {
     if (localStorage.getItem("projects") === null) {
@@ -35,6 +36,7 @@ export const addNewProject = function(event) {
         const newProjectsStorage = getProjects();
         newProjectsStorage.push(projectObject);
         setProjects(newProjectsStorage);
+        loadToday();
     }
 }
 
@@ -116,5 +118,6 @@ export const handleDeleteProject = function(deleteButton) {
     console.log(deleteButton.parentNode);
     if (includesTitle(projectTitle)) {
         removeProject(getTitleIndexOf(projectTitle));
+        loadToday();
     }
 }
