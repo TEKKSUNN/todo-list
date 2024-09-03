@@ -27,9 +27,22 @@ const setProjects = function(newProjects) {
 export const addNewProject = function(event) {
     event.preventDefault();
     const projectObject = Project.extractAllValues();
-    const newProjectsStorage = getProjects();
-    newProjectsStorage.push(projectObject);
-    setProjects(newProjectsStorage);
+    if (!includesTitle(projectObject.title)) {
+        const newProjectsStorage = getProjects();
+        newProjectsStorage.push(projectObject);
+        setProjects(newProjectsStorage);
+    }
+}
+
+const includesTitle = function(title) {
+    const projects = getProjects();
+    let res = false;
+    projects.map((project) => {
+        if (project.title === title) {
+            res = true;
+        }
+    });
+    return res;
 }
 
 const isBetween = function(newerDate, olderDate, dateForCompare) {
