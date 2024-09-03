@@ -9,6 +9,11 @@ export const handleEmptyStorage = function() {
     if (localStorage.getItem("projects") === null) {
         localStorage.setItem("projects", JSON.stringify(getDefaultProject()));
     }
+    else if (getProjects().length === 0) {
+        const projects = getProjects();
+        projects.push(getDefaultProject());
+        setProjects(projects);
+    }
 }
 
 export const getProjects = function() {
