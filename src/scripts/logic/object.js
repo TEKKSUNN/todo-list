@@ -68,3 +68,9 @@ export const getYearProjects = function() {
     });
     return yearProjects;
 }
+
+export const removeProject = function(projectIndex) {
+    const projects = getProjects();
+    projects.splice(projectIndex, 1);
+    setProjects(projects);
+}
