@@ -139,3 +139,7 @@ export const addRequired = function(element) {
 }
 
 export const getDialogSpace = new Query("#dialogs").get;
+
+export const resetContent = () => {
+    getContent().innerHTML = "";
+};
