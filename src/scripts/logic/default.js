@@ -1,4 +1,4 @@
-import { format, add } from "date-fns";
+import { add } from "date-fns";
 
 import { formatDate } from "./dates";
 

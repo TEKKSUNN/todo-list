@@ -1,7 +1,5 @@
 import { Query } from "./helpers";
 
-import { format } from "date-fns";
-
 import { formatDate } from "../logic/dates";
 
 const getValue = function(query) {

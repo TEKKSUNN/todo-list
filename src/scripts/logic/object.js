@@ -2,7 +2,6 @@ import { Project } from "../dom/get";
 
 import getDefaultProject from "./default";
 
-import { closeDialogs } from "../dom/helpers";
 import { sub, compareDesc } from "date-fns";
 import { formatDate } from "./dates";
 
