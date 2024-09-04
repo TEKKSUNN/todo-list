@@ -1,6 +1,6 @@
 import { boolChoiceDialog } from "../dom/dialogs";
 import { createDiv, createButton, appendTo, getAllTabs, createText, getContent, resetContent, handleClick } from "../dom/helpers";
-import { getMonthProjects, getProjects, getProjectsLength, getTitleIndexOf, getTodayProjects, getWeekProjects, getYearProjects, handleDeleteProject } from "./object";
+import { getMonthProjects, getProjects, getTitleIndexOf, getTodayProjects, getWeekProjects, getYearProjects, handleDeleteProject } from "./object";
 
 const createTab = (content) => createButton("tab", `${content}`);
 
