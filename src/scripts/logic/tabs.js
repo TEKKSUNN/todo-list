@@ -1,4 +1,4 @@
-import { boolChoiceDialog } from "../dom/dialogs";
+import { boolChoiceDialog, showTasksDialog } from "../dom/dialogs";
 import { createDiv, createButton, appendTo, getAllTabs, createText, getContent, resetContent, handleClick } from "../dom/helpers";
 import { getMonthProjects, getProjects, getTitleIndexOf, getTodayProjects, getWeekProjects, getYearProjects, handleDeleteProject } from "./object";
 
@@ -63,6 +63,7 @@ const createProjectCard = function(project) {
     const projectDesc = createText("project-desc", project.description, "p");
     const buttons = createDiv("card-buttons");
     const viewButton = createButton("view view-project", "");
+    handleClick(() => showTasksDialog(project.title), viewButton);
     const addTaskButton = createButton("project-add-task", "");
     const notesButton = createButton("project-notes", "");
     appendTo(buttons, notesButton, addTaskButton, viewButton);

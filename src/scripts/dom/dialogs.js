@@ -1,9 +1,11 @@
 import { handleSubmit } from "../logic/form";
 import { getDialogSpace, createDiv, createButton, createDialog, appendTo, createText,
     handleClick, showLastDialog, closeDialog, closeDialogs, createForm, createLabel,
-    createInput, createRequiredInput, createSubmitButton
+    createInput, createRequiredInput, createSubmitButton,
+    createBulletList, createListItem
  } from "./helpers";
-import { addNewProject } from "../logic/object"; 
+import { addNewProject, getProjects, getTitleIndexOf } from "../logic/object";
+import { format } from "date-fns";
 
 /* TODO:
     - Make a dialog that prompts the user for adding new project
@@ -68,6 +70,42 @@ const createProjectDialog = function() {
     handleSubmit(addNewProject, form);
     appendTo(form, text, titleGroup, descGroup, dueDateGroup, submitButton);
     appendTo(dialog, form);
+    return dialog;
+}
+
+export const showTasksDialog = function(projectTitle) {
+    const tasksDialog = createTasksDialog(getTitleIndexOf(projectTitle));
+    appendTo(dialogSpace, tasksDialog);
+    showLastDialog();
+}
+
+const hyphenLower = function(text) {
+    return text.replace(/\s+/g, "-").toLowerCase();
+}
+
+const createTasksDialog = function(projectIndex) {
+    const project = getProjects()[projectIndex];
+    const dialog = genericDialog("tasks-dialog", `tasks-${projectIndex}`);
+    const container = createDiv("tasks-container");
+    const projectTitle = createText("tasks-header", `${project.title}`, "h3");
+    const taskList = createBulletList("task-list");
+    project.tasks.map((taskObject) => {
+        const task = taskObject.task;
+        const newTaskContainer = createDiv("task-container");
+        const taskCheckBox = createInput("checkbox", `check-${hyphenLower(task)}`, "task-checkbox");
+        const newTask = createListItem("task", task);
+        const prioritySignal = createDiv(`priority ${taskObject.priority}-priority`);
+        const dueDateText = createText("due-date-task", format(taskObject.dueDate, "yyyy/MM/dd"), "p");
+        appendTo(newTaskContainer, taskCheckBox, newTask, prioritySignal, dueDateText);
+        appendTo(taskList, newTaskContainer);
+    });
+    const addDiv = createDiv("add-task-container");
+    const addTaskButton = createButton("tasks-add-task task-btn", "");
+    const addTaskText = createText("tasks-add-task task-text", "Add new task...");
+    appendTo(addDiv, addTaskButton, addTaskText);
+    appendTo(taskList, addDiv);
+    appendTo(container, projectTitle, taskList);
+    appendTo(dialog, container);
     return dialog;
 }
 

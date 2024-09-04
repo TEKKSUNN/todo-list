@@ -143,3 +143,16 @@ export const getDialogSpace = new Query("#dialogs").get;
 export const resetContent = () => {
     getContent().innerHTML = "";
 };
+
+export const createBulletList = function(className) {
+    const bulletList = document.createElement("ul");
+    bulletList.className = className;
+    return bulletList;
+}
+
+export const createListItem = function(className, content) {
+    const listItem = document.createElement("li");
+    listItem.className = className;
+    listItem.textContent = content;
+    return listItem;
+}
