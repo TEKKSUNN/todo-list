@@ -358,3 +358,76 @@ dialog .cancel-btn:hover {
 .no-btn:hover {
     background-color: hsl(0, 50%, 75%);
 }
+
+.task-list {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+}
+
+.task-container,
+.add-task-container {
+    display: flex;
+    gap: 8px;
+    font-family: 'robotothin', sans-serif;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.tasks-header {
+    text-align: center;
+    border-bottom: 2px solid var(--main-color);
+    margin-bottom: 4px;
+}
+
+.task-btn {
+    --size: 20px;
+    background-image: url("../images/add.png");
+    height: var(--size);
+    width: var(--size);
+    background-size: var(--size);
+    border: 0;
+    background-color: transparent;
+    position: relative;
+    right: 4px;
+}
+
+button.tasks-add-task.task-btn:hover {
+    box-shadow: none;
+}
+
+.tasks-add-task {
+    cursor: pointer;
+}
+
+.add-task-container {
+    gap: 0;
+    justify-content: flex-start;
+}
+
+.priority {
+    --size: 5px;
+    border-radius: var(--size);
+    height: var(--size);
+    width: var(--size);
+}
+
+.low-priority {
+    background-color: green;
+}
+
+.medium-priority {
+    background-color: yellow;
+}
+
+.high-priority {
+    background-color: red;
+}
+
+.due-date-task {
+    font-size: 0.75rem;
+    color: grey;
+}
