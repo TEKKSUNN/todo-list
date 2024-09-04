@@ -70,3 +70,13 @@ const createProjectDialog = function() {
     appendTo(dialog, form);
     return dialog;
 }
+
+// TODO :
+//  - Make a dialog that shows all tasks from a project
+//  - Make a "New Task" button as its last element on the list
+//  - Make a dialog that will give a form that is for the data of the new task
+//  - Get that data and add it to the project
+//  - Update the tasks dialog based on new task list
+//  - Make the "+" icon on a project card be able to add a "New Task"
+//  - Make the notes button be able to show a dialog that will show a textarea field and a save button on its bottom
+//  - Make sure all dialogs come from the "genericDialog" function, so cancel button will be involved before anything else
