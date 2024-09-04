@@ -13,6 +13,9 @@
     --pad-neg-height: calc(var(--pad-height) - (var(--pad-height) * 2));
     --pad-neg-width: calc(var(--pad-width) - (var(--pad-width) * 2));
     --mild-shadow: 5px 5px 10px rgba(0, 0, 0, 0.25);
+    --generic-padding: var(--pad-height) var(--pad-width);
+    --small-padding: calc(var(--pad-height) / 2) calc(var(--pad-width) / 2);
+    --softer-shadow: 5px 5px 10px rgba(0, 0, 0, 0.10);
 }
 
 body {
@@ -310,4 +313,48 @@ dialog .cancel-btn:hover {
 
 .card-upper .delete:hover {
     background-color: rgb(255, 68, 68);
+}
+
+.bool-dialog {
+    padding: var(--generic-padding);
+    background-color: var(--quaternary-color);
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+}
+
+.question {
+    font-family: 'robotothin', sans-serif;
+    font-weight: bold;
+}
+
+.choices {
+    display: flex;
+    justify-content: space-around;
+}
+
+.dialog-btn {
+    padding: var(--small-padding);
+    border: 1px solid black;
+    border-radius: 5px;
+}
+
+.dialog-btn:hover {
+    box-shadow: var(--softer-shadow);
+}
+
+.yes-btn {
+    background-color: hsl(120, 100%, 50%);
+}
+
+.yes-btn:hover {
+    background-color: hsl(120, 100%, 75%);
+}
+
+.no-btn {
+    background-color: hsl(0, 50%, 50%);
+}
+
+.no-btn:hover {
+    background-color: hsl(0, 50%, 75%);
 }
