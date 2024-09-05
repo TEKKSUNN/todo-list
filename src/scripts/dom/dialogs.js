@@ -153,11 +153,16 @@ const createNewTaskForm = function() {
     const highPriority = presetRadioButton("high", "task-priority", "", "High");
     appendTo(priorityButtonContainer, lowPriority, medPriority, highPriority);
     appendTo(priorityContainer, priorityLabel, priorityButtonContainer);
-    const finishedState = presetInput("input-container", ["Finished?", "task-finished-state", "dialog-label"],
-        ["checkbox", "task-finished-state", "add-task task-finished-state"]
-    );
+    const finishedContainer = createDiv("input-container");
+    const finishedLabel = createLabel("Finished?", "task-priority-list", "dialog-label");
+    const finishedButtonContainer = createDiv("radios-container");
+    finishedButtonContainer.setAttribute("id", finishedLabel.for);
+    const yesRadio = presetRadioButton("yes", "task-finished-state", "", "Yes");
+    const noRadio = presetRadioButton("no", "task-finished-state", "", "No");
+    appendTo(finishedButtonContainer, yesRadio, noRadio);
+    appendTo(finishedContainer, finishedLabel, finishedButtonContainer);
     const submitButton = createSubmitButton("Add", "add-task task-submit");
-    appendTo(form, taskName, dueDate, priorityContainer, finishedState, submitButton);
+    appendTo(form, taskName, dueDate, priorityContainer, finishedContainer, submitButton);
     appendTo(container, dialogTitle, form);
     appendTo(dialog, container);
     return dialog;
