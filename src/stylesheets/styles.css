@@ -432,3 +432,37 @@ button.tasks-add-task.task-btn:hover {
     font-size: 0.75rem;
     color: grey;
 }
+
+.new-task-container {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+}
+
+.input-container > :nth-child(2) {
+    width: 50%;
+}
+
+.input-container {
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+    gap: 4px;
+}
+
+.radios-container {
+    display: flex;
+    flex-direction: column;
+}
+
+.radio-container {
+    display: flex;
+}
+
+.task-submit {
+    align-self: flex-end;
+}
+
+.new-task-container .task-submit:hover {
+    box-shadow: none;
+}
