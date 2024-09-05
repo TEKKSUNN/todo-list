@@ -16,6 +16,7 @@
     --generic-padding: var(--pad-height) var(--pad-width);
     --small-padding: calc(var(--pad-height) / 2) calc(var(--pad-width) / 2);
     --softer-shadow: 5px 5px 10px rgba(0, 0, 0, 0.10);
+    --light-tertiary-color: hsl(183, 100%, 45%);
 }
 
 body {
@@ -227,8 +228,8 @@ dialog .cancel-btn:hover {
 }
 
 .card-lower button:hover {
-    background-color: var(--dark-tertiary-color);
-    border-radius: 10px;
+    background-color: var(--light-tertiary-color);
+    border-radius: 5px;
     overflow: visible;
 }
 
