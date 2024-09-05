@@ -136,7 +136,7 @@ const presetRadioButton = function(value, name, Id, labelContent) {
 
 const createNewTaskForm = function() {
     const dialog = genericDialog("new-task-dialog", "new-task-dialog");
-    const container = createDiv("add-task-container");
+    const container = createDiv("new-task-container");
     const dialogTitle = createText("dialog-title", "Add New Task", "h3");
     const form = createForm("new-task-form", "new-task-form");
     const taskName = presetInput("input-container", ["Task:", "task-name", "dialog-label"],
