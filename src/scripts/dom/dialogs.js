@@ -2,7 +2,9 @@ import { handleSubmit } from "../logic/form";
 import { getDialogSpace, createDiv, createButton, createDialog, appendTo, createText,
     handleClick, showLastDialog, closeDialog, closeDialogs, createForm, createLabel,
     createInput, createRequiredInput, createSubmitButton,
-    createBulletList, createListItem
+    createBulletList, createListItem,
+    createSelection,
+    createRadioButton
  } from "./helpers";
 import { addNewProject, getProjects, getTitleIndexOf } from "../logic/object";
 import { format } from "date-fns";
@@ -102,9 +104,61 @@ const createTasksDialog = function(projectIndex) {
     const addDiv = createDiv("add-task-container");
     const addTaskButton = createButton("tasks-add-task task-btn", "");
     const addTaskText = createText("tasks-add-task task-text", "Add new task...");
+    handleClick(showNewTaskForm, addTaskButton, addTaskText);
     appendTo(addDiv, addTaskButton, addTaskText);
     appendTo(taskList, addDiv);
     appendTo(container, projectTitle, taskList);
+    appendTo(dialog, container);
+    return dialog;
+}
+
+export const showNewTaskForm = function() {
+    const newTaskForm = createNewTaskForm();
+    appendTo(dialogSpace, newTaskForm);
+    showLastDialog();
+}
+
+const presetInput = function(containerClass, [...labelProperties], [...inputProperties]) {
+    const container = createDiv(containerClass.toString());
+    const label = createLabel(labelProperties[0], labelProperties[1], labelProperties[2]);
+    const input = createInput(inputProperties[0], inputProperties[1], inputProperties[2]);
+    appendTo(container, label, input);
+    return container;
+}
+
+const presetRadioButton = function(value, name, Id, labelContent) {
+    const container = createDiv("radio-container");
+    const radioButton = createRadioButton(name, value, "radio", Id, "dialog-radio");
+    const label = createLabel(labelContent, Id, "dialog-label");
+    appendTo(container, radioButton, label);
+    return container;
+}
+
+const createNewTaskForm = function() {
+    const dialog = genericDialog("new-task-dialog", "new-task-dialog");
+    const container = createDiv("add-task-container");
+    const dialogTitle = createText("dialog-title", "Add New Task", "h3");
+    const form = createForm("new-task-form", "new-task-form");
+    const taskName = presetInput("input-container", ["Task:", "task-name", "dialog-label"],
+        ["text", "task-name", "add-task task-name"]);
+    const dueDate = presetInput("input-container", ["Due Date:", "due-date-task", "dialog-label"],
+        ["date", "due-date-task", "add-task task-due-date"]
+    );
+    const priorityContainer = createDiv("input-container");
+    const priorityLabel = createLabel("Priority:", "task-priority-list", "dialog-label");
+    const priorityButtonContainer = createDiv("radios-container");
+    priorityButtonContainer.setAttribute("id", priorityLabel.for);
+    const lowPriority = presetRadioButton("low", "task-priority", "", "Low");
+    const medPriority = presetRadioButton("medium", "task-priority", "", "Medium");
+    const highPriority = presetRadioButton("high", "task-priority", "", "High");
+    appendTo(priorityButtonContainer, lowPriority, medPriority, highPriority);
+    appendTo(priorityContainer, priorityLabel, priorityButtonContainer);
+    const finishedState = presetInput("input-container", ["Finished?", "task-finished-state", "dialog-label"],
+        ["checkbox", "task-finished-state", "add-task task-finished-state"]
+    );
+    const submitButton = createSubmitButton("Add", "add-task task-submit");
+    appendTo(form, taskName, dueDate, priorityContainer, finishedState, submitButton);
+    appendTo(container, dialogTitle, form);
     appendTo(dialog, container);
     return dialog;
 }

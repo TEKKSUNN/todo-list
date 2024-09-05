@@ -156,3 +156,10 @@ export const createListItem = function(className, content) {
     listItem.textContent = content;
     return listItem;
 }
+
+export const createRadioButton = function(name, value, type, Id, className) {
+    const input = createInput(type, Id, className);
+    input.setAttribute("name", name);
+    input.setAttribute("value", value);
+    return input;
+}
