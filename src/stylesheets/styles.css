@@ -26,9 +26,6 @@ body {
     overflow: hidden;
     margin: 0;
     padding: 0;
-}
-
-#container {
     display: grid;
     grid-template: max-content 1fr max-content / 1fr;
     grid-template-areas:
@@ -506,4 +503,8 @@ button.add-task {
 .add-button:hover,
 button.add-task:hover {
     background-color: hsl(120, 100%, 75%);
+}
+
+footer {
+
 }
