@@ -145,3 +145,21 @@ export const addNewTask = function(projectTitle) {
     }
     handleTaskDialogs(projectTitle);
 }
+
+const getTaskIndex = function(task, projectTitle) {
+    const project = getProjects()[getTitleIndexOf(projectTitle)];
+    let index;
+    project.tasks.map((taskObject, taskIndex) => {
+        if (taskObject.task === task) {
+            index = taskIndex;
+        }
+    })
+    return index;
+}
+
+export const deleteTask = function(task, projectTitle) {
+    const projects = getProjects();
+    projects[getTitleIndexOf(projectTitle)].tasks.splice(getTaskIndex(task, projectTitle), 1);
+    setProjects(projects);
+    handleTaskDialogs(projectTitle);
+}
