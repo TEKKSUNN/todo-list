@@ -479,3 +479,7 @@ button.tasks-add-task.task-btn:hover {
 button.delete-task:hover {
     box-shadow: none;
 }
+
+fieldset {
+    border: 0;
+}
