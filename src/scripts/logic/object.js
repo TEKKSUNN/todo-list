@@ -1,4 +1,4 @@
-import { Project, Tasks } from "../dom/get";
+import { getNotes, Project, Tasks } from "../dom/get";
 
 import getDefaultProject from "./default";
 
@@ -170,4 +170,12 @@ export const handleCheck = function(checkBox, task, projectTitle) {
         .tasks[getTaskIndex(task, projectTitle)]
         .finished = checkBox.checked;
     setProjects(projects);
+}
+
+export const saveNotes = function(projectTitle) {
+    const projects = getProjects();
+    const notes = getNotes();
+    projects[getTitleIndexOf(projectTitle)].notes = notes;
+    setProjects(projects);
+    closeDialogs();
 }
