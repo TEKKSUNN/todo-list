@@ -47,4 +47,4 @@ export const Tasks = (function() {
     return { extractAllValues };
 })();
 
-export const getNotes = () => getValue("#notes-text-area");
+export const getNotes = () => getValue("#notes-textarea");
