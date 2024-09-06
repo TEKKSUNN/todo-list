@@ -5,7 +5,7 @@ import { getDialogSpace, createDiv, createButton, createDialog, appendTo, create
     createBulletList, createListItem,
     createRadioButton
  } from "./helpers";
-import { addNewProject, addNewTask, getProjects, getTitleIndexOf } from "../logic/object";
+import { addNewProject, addNewTask, deleteTask, getProjects, getTitleIndexOf } from "../logic/object";
 import { format } from "date-fns";
 import { get } from "./get";
 
@@ -85,6 +85,10 @@ const hyphenLower = function(text) {
     return text.replace(/\s+/g, "-").toLowerCase();
 }
 
+const handleDeleteTask = function(task, projectTitle) {
+    boolChoiceDialog("Are you sure you want to delete this task?", () => deleteTask(task, projectTitle));
+}
+
 const createTasksDialog = function(projectIndex) {
     const project = getProjects()[projectIndex];
     const dialog = genericDialog("tasks-dialog", `tasks-${projectIndex}`);
@@ -99,7 +103,9 @@ const createTasksDialog = function(projectIndex) {
         const newTask = createListItem("task", task);
         const prioritySignal = createDiv(`priority ${taskObject.priority}-priority`);
         const dueDateText = createText("due-date-task", format(taskObject.dueDate, "yyyy/MM/dd"), "p");
-        appendTo(newTaskContainer, taskCheckBox, newTask, prioritySignal, dueDateText);
+        const deleteTaskButton = createButton("delete-task", "");
+        handleClick(() => handleDeleteTask(taskObject.task, project.title), deleteTaskButton);
+        appendTo(newTaskContainer, taskCheckBox, newTask, prioritySignal, dueDateText, deleteTaskButton);
         appendTo(taskList, newTaskContainer);
     });
     const addDiv = createDiv("add-task-container");
