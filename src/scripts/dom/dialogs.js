@@ -11,19 +11,6 @@ import { addNewProject, addNewTask, deleteTask, getProjects, getTitleIndexOf, ha
 import { format } from "date-fns";
 import { get, getNotesFromProject } from "./get";
 
-/* TODO:
-    - Make a dialog that prompts the user for adding new project
-    - Make a dialog that prompts the user for adding new task
-    - Make a project-card that shows the project on the project list w/ appropriate buttons
-    - Add ability to make notes of the project
-    - Add ability to view the tasks inside the project
-    - Add ability to add a task directly in the project-card
-    - Add ability to delete a project, use prompt yes/no
-    - Before adding the task, prompt user if they really want to add it
-    - Before adding project, prompt user if they really want to add it
-    - Add cancel button to all dialogs, one logic removing all
-*/
-
 const dialogSpace = getDialogSpace();
 
 const genericDialog = function(className, Id) {
@@ -222,13 +209,3 @@ const createNotesDialog = function(projectTitle) {
     appendTo(dialog, container);
     return dialog;
 }
-
-// TODO :
-//  - Make a dialog that shows all tasks from a project
-//  - Make a "New Task" button as its last element on the list
-//  - Make a dialog that will give a form that is for the data of the new task
-//  - Get that data and add it to the project
-//  - Update the tasks dialog based on new task list
-//  - Make the "+" icon on a project card be able to add a "New Task"
-//  - Make the notes button be able to show a dialog that will show a textarea field and a save button on its bottom
-//  - Make sure all dialogs come from the "genericDialog" function, so cancel button will be involved before anything else
