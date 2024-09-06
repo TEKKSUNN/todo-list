@@ -9,7 +9,7 @@ import { getDialogSpace, createDiv, createButton, createDialog, appendTo, create
  } from "./helpers";
 import { addNewProject, addNewTask, deleteTask, getProjects, getTitleIndexOf, handleCheck, saveNotes } from "../logic/object";
 import { format } from "date-fns";
-import { get } from "./get";
+import { get, getNotesFromProject } from "./get";
 
 /* TODO:
     - Make a dialog that prompts the user for adding new project
@@ -213,6 +213,7 @@ const createNotesDialog = function(projectTitle) {
     const container = createDiv("notes-container");
     const title = createText("notes-title", "Project Notes:", "h3");
     const notes = createTextArea("notes-textarea", "notes-textarea", 4, 50, "Write something here for the project...");
+    notes.value = getNotesFromProject(projectTitle);
     const saveButton = createButton("save-notes-btn", "Save");
     handleClick(() => saveNotes(projectTitle), saveButton);
     appendTo(container, title, notes, saveButton);
