@@ -179,3 +179,5 @@ export const createTextArea = function(className, Id, rows, columns, placeholder
     textArea.setAttribute("placeholder", placeholder);
     return textArea;
 }
+
+export const getFooter = new Query("footer").get;
