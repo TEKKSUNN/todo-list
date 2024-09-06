@@ -483,3 +483,17 @@ button.delete-task:hover {
 fieldset {
     border: 0;
 }
+
+.notes-container {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+}
+
+.save-notes-btn {
+    align-self: flex-end;
+}
+
+button.save-notes-btn:hover {
+    box-shadow: none;
+}
