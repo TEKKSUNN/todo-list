@@ -506,5 +506,17 @@ button.add-task:hover {
 }
 
 footer {
+    display: flex;
+    justify-content: space-around;
+    padding: var(--generic-padding);
+    background-image: linear-gradient(var(--secondary-color), var(--main-color));
+    box-shadow: 0 -5px 10px rgba(0, 0, 0, 0.25);
+}
 
+footer * {
+    color: var(--quaternary-color);
+}
+
+a:hover {
+    text-decoration: none;
 }
