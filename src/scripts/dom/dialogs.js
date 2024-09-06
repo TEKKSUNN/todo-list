@@ -4,9 +4,10 @@ import { getDialogSpace, createDiv, createButton, createDialog, appendTo, create
     createInput, createRequiredInput, createSubmitButton,
     createBulletList, createListItem,
     createRadioButton,
-    createFieldSet
+    createFieldSet,
+    createTextArea
  } from "./helpers";
-import { addNewProject, addNewTask, deleteTask, getProjects, getTitleIndexOf, handleCheck } from "../logic/object";
+import { addNewProject, addNewTask, deleteTask, getProjects, getTitleIndexOf, handleCheck, saveNotes } from "../logic/object";
 import { format } from "date-fns";
 import { get } from "./get";
 
@@ -199,6 +200,24 @@ const createNewTaskForm = function() {
 export const handleTaskDialogs = function(projectTitle) {
     closeDialogs();
     showTasksDialog(projectTitle);
+}
+
+export const showNotesDialog = function(projectTitle) {
+    const notesDialog = createNotesDialog(projectTitle);
+    appendTo(dialogSpace, notesDialog);
+    showLastDialog();
+}
+
+const createNotesDialog = function(projectTitle) {
+    const dialog = genericDialog("project-notes-dialog", "project-notes-dialog");
+    const container = createDiv("notes-container");
+    const title = createText("notes-title", "Project Notes:", "h3");
+    const notes = createTextArea("notes-textarea", "notes-textarea", 4, 50, "Write something here for the project...");
+    const saveButton = createButton("save-notes-btn", "Save");
+    handleClick(() => saveNotes(projectTitle), saveButton);
+    appendTo(container, title, notes, saveButton);
+    appendTo(dialog, container);
+    return dialog;
 }
 
 // TODO :
