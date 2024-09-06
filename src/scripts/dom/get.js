@@ -6,7 +6,7 @@ const getValue = function(query) {
     return get(query).value;
 }
 
-const get = function(query) {
+export const get = function(query) {
     return new Query(query.toString()).get();
 }
 
@@ -25,4 +25,24 @@ export const Project = (function() {
         return values;
     }
     return { getTitle, getDesc, getDueDate, extractValues, extractAllValues };
+})();
+
+const getRadioValue = function(radioContainerQuery) {
+    return getValue(`${radioContainerQuery} input[type=\"radio\"]:checked`);
+}
+
+export const Tasks = (function() {
+    const getTask = () => getValue("#task-name");
+    const getDueDate = () => formatDate(getValue("#due-date-task"));
+    const getPriority = () => getRadioValue("#task-priority-list");
+    const getFinishedState = () => getRadioValue("#task-finished-state");
+    const extractAllValues = () => {
+        return {
+            task: getTask(),
+            dueDate: getDueDate(),
+            priority: getPriority(),
+            finished: getFinishedState()
+        };
+    }
+    return { extractAllValues };
 })();
