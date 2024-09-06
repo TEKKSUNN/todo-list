@@ -81,9 +81,7 @@ export const getTodayProjects = function() {
 export const getWeekProjects = function() {
     const projects = getProjects();
     const DateNow = new Date();
-    console.log(projects);
     const weekProjects = projects.filter((project) => {
-        console.log(project);
         return isBetween(DateNow, sub(DateNow, { weeks: 1 }), project.started);
     });
     return weekProjects;
