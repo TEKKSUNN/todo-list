@@ -35,7 +35,7 @@ export const Tasks = (function() {
     const getTask = () => getValue("#task-name");
     const getDueDate = () => formatDate(getValue("#due-date-task"));
     const getPriority = () => getRadioValue("#task-priority-list");
-    const getFinishedState = () => getRadioValue("#task-finished-state");
+    const getFinishedState = () => JSON.parse(getRadioValue("#task-finished-state"));
     const extractAllValues = () => {
         return {
             task: getTask(),

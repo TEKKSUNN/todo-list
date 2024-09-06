@@ -95,6 +95,7 @@ const createTasksDialog = function(projectIndex) {
         const task = taskObject.task;
         const newTaskContainer = createDiv("task-container");
         const taskCheckBox = createInput("checkbox", `check-${hyphenLower(task)}`, "task-checkbox");
+        taskCheckBox.checked = taskObject.finished;
         const newTask = createListItem("task", task);
         const prioritySignal = createDiv(`priority ${taskObject.priority}-priority`);
         const dueDateText = createText("due-date-task", format(taskObject.dueDate, "yyyy/MM/dd"), "p");
@@ -157,8 +158,8 @@ const createNewTaskForm = function() {
     const finishedLabel = createLabel("Finished?", "task-finished-state", "dialog-label");
     const finishedButtonContainer = createDiv("radios-container");
     finishedButtonContainer.setAttribute("id", "task-finished-state");
-    const yesRadio = presetRadioButton("yes", "task-finished-state", "", "Yes");
-    const noRadio = presetRadioButton("no", "task-finished-state", "", "No");
+    const yesRadio = presetRadioButton("true", "task-finished-state", "", "Yes");
+    const noRadio = presetRadioButton("false", "task-finished-state", "", "No");
     appendTo(finishedButtonContainer, yesRadio, noRadio);
     appendTo(finishedContainer, finishedLabel, finishedButtonContainer);
     const submitButton = createSubmitButton("Add", "add-task task-submit");
