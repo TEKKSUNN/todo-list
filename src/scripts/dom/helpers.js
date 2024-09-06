@@ -163,3 +163,9 @@ export const createRadioButton = function(name, value, type, Id, className) {
     input.setAttribute("value", value);
     return input;
 }
+
+export const createFieldSet = function(className) {
+    const fieldSet = document.createElement("fieldset");
+    fieldSet.className = className;
+    return fieldSet;
+}
