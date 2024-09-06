@@ -3,7 +3,8 @@ import { getDialogSpace, createDiv, createButton, createDialog, appendTo, create
     handleClick, showLastDialog, closeDialog, closeDialogs, createForm, createLabel,
     createInput, createRequiredInput, createSubmitButton,
     createBulletList, createListItem,
-    createRadioButton
+    createRadioButton,
+    createFieldSet
  } from "./helpers";
 import { addNewProject, addNewTask, deleteTask, getProjects, getTitleIndexOf } from "../logic/object";
 import { format } from "date-fns";
@@ -89,6 +90,12 @@ const handleDeleteTask = function(task, projectTitle) {
     boolChoiceDialog("Are you sure you want to delete this task?", () => deleteTask(task, projectTitle));
 }
 
+const setRequired = function(...elements) {
+    elements.map((element) => {
+        element.setAttribute("required", "");
+    })
+}
+
 const createTasksDialog = function(projectIndex) {
     const project = getProjects()[projectIndex];
     const dialog = genericDialog("tasks-dialog", `tasks-${projectIndex}`);
@@ -129,6 +136,7 @@ const presetInput = function(containerClass, [...labelProperties], [...inputProp
     const container = createDiv(containerClass.toString());
     const label = createLabel(labelProperties[0], labelProperties[1], labelProperties[2]);
     const input = createInput(inputProperties[0], inputProperties[1], inputProperties[2]);
+    setRequired(input);
     appendTo(container, label, input);
     return container;
 }
@@ -137,6 +145,15 @@ const presetRadioButton = function(value, name, Id, labelContent) {
     const container = createDiv("radio-container");
     const radioButton = createRadioButton(name, value, "radio", Id, "dialog-radio");
     const label = createLabel(labelContent, Id, "dialog-label");
+    appendTo(container, radioButton, label);
+    return container;
+}
+
+const presetRadioButtonRequired = function(value, name, Id, labelContent) {
+    const container = createDiv("radio-container");
+    const radioButton = createRadioButton(name, value, "radio", Id, "dialog-radio");
+    const label = createLabel(labelContent, Id, "dialog-label");
+    setRequired(radioButton);
     appendTo(container, radioButton, label);
     return container;
 }
@@ -153,18 +170,18 @@ const createNewTaskForm = function() {
     );
     const priorityContainer = createDiv("input-container");
     const priorityLabel = createLabel("Priority:", "task-priority-list", "dialog-label");
-    const priorityButtonContainer = createDiv("radios-container");
+    const priorityButtonContainer = createFieldSet("radios-container");
     priorityButtonContainer.setAttribute("id", "task-priority-list");
-    const lowPriority = presetRadioButton("low", "task-priority", "", "Low");
+    const lowPriority = presetRadioButtonRequired("low", "task-priority", "", "Low");
     const medPriority = presetRadioButton("medium", "task-priority", "", "Medium");
     const highPriority = presetRadioButton("high", "task-priority", "", "High");
     appendTo(priorityButtonContainer, lowPriority, medPriority, highPriority);
     appendTo(priorityContainer, priorityLabel, priorityButtonContainer);
     const finishedContainer = createDiv("input-container");
     const finishedLabel = createLabel("Finished?", "task-finished-state", "dialog-label");
-    const finishedButtonContainer = createDiv("radios-container");
+    const finishedButtonContainer = createFieldSet("radios-container");
     finishedButtonContainer.setAttribute("id", "task-finished-state");
-    const yesRadio = presetRadioButton("true", "task-finished-state", "", "Yes");
+    const yesRadio = presetRadioButtonRequired("true", "task-finished-state", "", "Yes");
     const noRadio = presetRadioButton("false", "task-finished-state", "", "No");
     appendTo(finishedButtonContainer, yesRadio, noRadio);
     appendTo(finishedContainer, finishedLabel, finishedButtonContainer);
