@@ -3,7 +3,6 @@ import { getDialogSpace, createDiv, createButton, createDialog, appendTo, create
     handleClick, showLastDialog, closeDialog, closeDialogs, createForm, createLabel,
     createInput, createRequiredInput, createSubmitButton,
     createBulletList, createListItem,
-    createSelection,
     createRadioButton
  } from "./helpers";
 import { addNewProject, addNewTask, getProjects, getTitleIndexOf } from "../logic/object";
