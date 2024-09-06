@@ -6,8 +6,9 @@ import { getDialogSpace, createDiv, createButton, createDialog, appendTo, create
     createSelection,
     createRadioButton
  } from "./helpers";
-import { addNewProject, getProjects, getTitleIndexOf } from "../logic/object";
+import { addNewProject, addNewTask, getProjects, getTitleIndexOf } from "../logic/object";
 import { format } from "date-fns";
+import { get } from "./get";
 
 /* TODO:
     - Make a dialog that prompts the user for adding new project
@@ -163,9 +164,15 @@ const createNewTaskForm = function() {
     appendTo(finishedContainer, finishedLabel, finishedButtonContainer);
     const submitButton = createSubmitButton("Add", "add-task task-submit");
     appendTo(form, taskName, dueDate, priorityContainer, finishedContainer, submitButton);
+    handleSubmit(() => addNewTask(get("#dialogs dialog:first-child h3.tasks-header").textContent), form);
     appendTo(container, dialogTitle, form);
     appendTo(dialog, container);
     return dialog;
+}
+
+export const handleTaskDialogs = function() {
+    closeDialogs();
+    showTasksDialog();
 }
 
 // TODO :

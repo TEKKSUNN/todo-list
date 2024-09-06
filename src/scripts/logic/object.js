@@ -1,10 +1,11 @@
-import { Project } from "../dom/get";
+import { Project, Tasks } from "../dom/get";
 
 import getDefaultProject from "./default";
 
 import { sub, compareDesc } from "date-fns";
 import { formatDate } from "./dates";
 import { loadToday } from "./tabs";
+import { handleTaskDialogs } from "../dom/dialogs";
 
 export const handleEmptyStorage = function() {
     if (localStorage.getItem("projects") === null) {
@@ -120,4 +121,12 @@ export const handleDeleteProject = function(deleteButton) {
         removeProject(getTitleIndexOf(projectTitle));
         loadToday();
     }
+}
+
+export const addNewTask = function(projectTitle) {
+    const projects = getProjects();
+    const newTask = Tasks.extractAllValues();
+    projects[getTitleIndexOf(projectTitle)].tasks.push(newTask);
+    setProjects(projects);
+    handleTaskDialogs();
 }
