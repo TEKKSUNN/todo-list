@@ -65,10 +65,12 @@ const createProjectDialog = function() {
     const descGroup = createDiv("group desc-group");
     const descLabel = createLabel("Description:", "desc-input", "project-label");
     const descInput = createInput("text", "desc-input", "project-input");
+    setRequired(descInput);
     appendTo(descGroup, descLabel, descInput);
     const dueDateGroup = createDiv("group due-date-group");
     const dueDateLabel = createLabel("Due Date:", "due-date-input", "project-label");
     const dueDate = createInput("datetime-local", "due-date-input", "project-input");
+    setRequired(dueDate);
     appendTo(dueDateGroup, dueDateLabel, dueDate);
     const submitButton = createSubmitButton("Add", "add-button project-submit");
     handleSubmit(addNewProject, form);
