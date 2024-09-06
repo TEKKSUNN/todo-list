@@ -169,3 +169,13 @@ export const createFieldSet = function(className) {
     fieldSet.className = className;
     return fieldSet;
 }
+
+export const createTextArea = function(className, Id, rows, columns, placeholder) {
+    const textArea = document.createElement("textarea");
+    textArea.setAttribute("class", className);
+    textArea.setAttribute("id", Id);
+    textArea.setAttribute("rows", rows.toString());
+    textArea.setAttribute("cols", columns.toString());
+    textArea.setAttribute("placeholder", placeholder);
+    return textArea;
+}
