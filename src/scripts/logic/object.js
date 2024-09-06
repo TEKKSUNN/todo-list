@@ -130,5 +130,5 @@ export const addNewTask = function(projectTitle) {
     const newTask = Tasks.extractAllValues();
     projects[getTitleIndexOf(projectTitle)].tasks.push(newTask);
     setProjects(projects);
-    handleTaskDialogs();
+    handleTaskDialogs(projectTitle);
 }

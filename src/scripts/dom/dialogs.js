@@ -169,9 +169,9 @@ const createNewTaskForm = function() {
     return dialog;
 }
 
-export const handleTaskDialogs = function() {
+export const handleTaskDialogs = function(projectTitle) {
     closeDialogs();
-    showTasksDialog();
+    showTasksDialog(projectTitle);
 }
 
 // TODO :
