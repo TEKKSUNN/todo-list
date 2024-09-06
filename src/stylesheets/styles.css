@@ -199,12 +199,6 @@ label {
     width: 50%;
 }
 
-.add-button {
-    border-radius: 5px;
-    align-self: flex-end;
-    padding: 8px 16px;
-}
-
 dialog .add-button:hover,
 dialog .cancel-btn:hover {
     box-shadow: none;
@@ -496,4 +490,20 @@ fieldset {
 
 button.save-notes-btn:hover {
     box-shadow: none;
+}
+
+.save-notes-btn,
+.add-button,
+button.add-task {
+    border-radius: 5px;
+    align-self: flex-end;
+    padding: 8px 16px;
+    background-color: hsl(120, 100%, 50%);
+}
+
+
+.save-notes-btn:hover,
+.add-button:hover,
+button.add-task:hover {
+    background-color: hsl(120, 100%, 75%);
 }
