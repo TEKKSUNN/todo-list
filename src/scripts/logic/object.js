@@ -66,9 +66,6 @@ const includesTask = function(task, projectTitle) {
 }
 
 const isBetween = function(newerDate, olderDate, dateForCompare) {
-    // console.log(Date.parse(dateForCompare) >= Date.parse(olderDate), Date.parse(dateForCompare) <= Date.parse(newerDate));
-    // console.log(formatDate(Date.parse(dateForCompare)), formatDate(Date.parse(newerDate)));
-    console.log(newerDate, olderDate, dateForCompare);
     return Date.parse(dateForCompare) >= Date.parse(olderDate) && Date.parse(dateForCompare) <= Date.parse(newerDate); 
 }
 

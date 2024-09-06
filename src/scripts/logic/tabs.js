@@ -51,7 +51,6 @@ const activateTab = function(tabId) {
 const content = getContent();
 
 const createProjectCard = function(project) {
-    console.log(project);
     const projectIndex = getTitleIndexOf(project.title);
     const projectCard = createDiv("project-card");
     const upperPart = createDiv("card-upper");
@@ -101,7 +100,6 @@ const loadAll = function() {
 
 const updateTab = function(projects) {
     resetContent();
-    console.log(projects);
     projects.forEach((project) => {
         appendTo(content, createProjectCard(project));
     });
