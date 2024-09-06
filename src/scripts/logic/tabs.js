@@ -1,6 +1,7 @@
 import { boolChoiceDialog, showNewTaskForm, showNotesDialog, showTasksDialog } from "../dom/dialogs";
 import { createDiv, createButton, appendTo, getAllTabs, createText, getContent, resetContent, handleClick } from "../dom/helpers";
 import { getMonthProjects, getProjects, getTitleIndexOf, getTodayProjects, getWeekProjects, getYearProjects, handleDeleteProject } from "./object";
+import { format } from "date-fns";
 
 const createTab = (content) => createButton("tab", `${content}`);
 
@@ -61,6 +62,8 @@ const createProjectCard = function(project) {
     appendTo(upperPart, projectTitle, deleteButton);
     const lowerPart = createDiv("card-lower");
     const projectDesc = createText("project-desc", project.description, "p");
+    const startedStatus = createText("project-started", ` -${format(project.started, "MM/dd/yyyy")}`, "span");
+    appendTo(projectDesc, startedStatus);
     const buttons = createDiv("card-buttons");
     const viewButton = createButton("view view-project", "");
     handleClick(() => showTasksDialog(project.title), viewButton);
