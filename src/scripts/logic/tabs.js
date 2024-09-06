@@ -1,4 +1,4 @@
-import { boolChoiceDialog, showNewTaskForm, showTasksDialog } from "../dom/dialogs";
+import { boolChoiceDialog, showNewTaskForm, showNotesDialog, showTasksDialog } from "../dom/dialogs";
 import { createDiv, createButton, appendTo, getAllTabs, createText, getContent, resetContent, handleClick } from "../dom/helpers";
 import { getMonthProjects, getProjects, getTitleIndexOf, getTodayProjects, getWeekProjects, getYearProjects, handleDeleteProject } from "./object";
 
@@ -67,6 +67,7 @@ const createProjectCard = function(project) {
     const addTaskButton = createButton("project-add-task", "");
     handleClick(() => boolChoiceDialog("Do you want to add a task for this project?", showNewTaskForm), addTaskButton);
     const notesButton = createButton("project-notes", "");
+    handleClick(showNotesDialog, notesButton);
     appendTo(buttons, notesButton, addTaskButton, viewButton);
     appendTo(lowerPart, projectDesc, buttons);
     appendTo(projectCard, upperPart, lowerPart);
