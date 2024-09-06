@@ -6,6 +6,7 @@ import { sub, compareDesc } from "date-fns";
 import { formatDate } from "./dates";
 import { loadToday } from "./tabs";
 import { handleTaskDialogs } from "../dom/dialogs";
+import { closeDialogs } from "../dom/helpers";
 
 export const handleEmptyStorage = function() {
     if (localStorage.getItem("projects") === null) {
@@ -38,6 +39,7 @@ export const addNewProject = function(event) {
         newProjectsStorage.push(projectObject);
         setProjects(newProjectsStorage);
         loadToday();
+        closeDialogs();
     }
 }
 
