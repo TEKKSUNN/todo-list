@@ -520,3 +520,10 @@ footer * {
 a:hover {
     text-decoration: none;
 }
+
+.project-started {
+    display: block;
+    font-family: 'robotobold', sans-serif;
+    color: var(--dark-tertiary-color);
+    text-align: end;
+}
