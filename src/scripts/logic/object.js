@@ -163,3 +163,11 @@ export const deleteTask = function(task, projectTitle) {
     setProjects(projects);
     handleTaskDialogs(projectTitle);
 }
+
+export const handleCheck = function(checkBox, task, projectTitle) {
+    const projects = getProjects();
+    projects[getTitleIndexOf(projectTitle)]
+        .tasks[getTaskIndex(task, projectTitle)]
+        .finished = checkBox.checked;
+    setProjects(projects);
+}
