@@ -54,6 +54,17 @@ const includesTitle = function(title) {
     return res;
 }
 
+const includesTask = function(task, projectTitle) {
+    const project = getProjects()[getTitleIndexOf(projectTitle)];
+    let res = false;
+    project.tasks.map((taskObject) => {
+        if (taskObject.task === task) {
+            res = true;
+        }
+    });
+    return res;
+}
+
 const isBetween = function(newerDate, olderDate, dateForCompare) {
     // console.log(Date.parse(dateForCompare) >= Date.parse(olderDate), Date.parse(dateForCompare) <= Date.parse(newerDate));
     // console.log(formatDate(Date.parse(dateForCompare)), formatDate(Date.parse(newerDate)));
@@ -128,7 +139,9 @@ export const handleDeleteProject = function(deleteButton) {
 export const addNewTask = function(projectTitle) {
     const projects = getProjects();
     const newTask = Tasks.extractAllValues();
-    projects[getTitleIndexOf(projectTitle)].tasks.push(newTask);
-    setProjects(projects);
+    if (!includesTask(newTask.task, projectTitle)) {
+        projects[getTitleIndexOf(projectTitle)].tasks.push(newTask);
+        setProjects(projects);
+    }
     handleTaskDialogs(projectTitle);
 }
