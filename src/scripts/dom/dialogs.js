@@ -6,7 +6,7 @@ import { getDialogSpace, createDiv, createButton, createDialog, appendTo, create
     createRadioButton,
     createFieldSet
  } from "./helpers";
-import { addNewProject, addNewTask, deleteTask, getProjects, getTitleIndexOf } from "../logic/object";
+import { addNewProject, addNewTask, deleteTask, getProjects, getTitleIndexOf, handleCheck } from "../logic/object";
 import { format } from "date-fns";
 import { get } from "./get";
 
@@ -102,11 +102,14 @@ const createTasksDialog = function(projectIndex) {
     const container = createDiv("tasks-container");
     const projectTitle = createText("tasks-header", `${project.title}`, "h3");
     const taskList = createBulletList("task-list");
-    project.tasks.map((taskObject) => {
+    project.tasks.map((taskObject, index) => {
         const task = taskObject.task;
         const newTaskContainer = createDiv("task-container");
         const taskCheckBox = createInput("checkbox", `check-${hyphenLower(task)}`, "task-checkbox");
         taskCheckBox.checked = taskObject.finished;
+        handleClick(() => {
+            handleCheck(Array.from(document.querySelectorAll(".task-checkbox")[index]), task, project.title)
+        }, taskCheckBox);
         const newTask = createListItem("task", task);
         const prioritySignal = createDiv(`priority ${taskObject.priority}-priority`);
         const dueDateText = createText("due-date-task", format(taskObject.dueDate, "yyyy/MM/dd"), "p");
