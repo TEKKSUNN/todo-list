@@ -1,6 +1,7 @@
 import { Query } from "./helpers";
 
 import { formatDate } from "../logic/dates";
+import { getProjects, getTitleIndexOf } from "../logic/object";
 
 const getValue = function(query) {
     return get(query).value;
@@ -48,3 +49,8 @@ export const Tasks = (function() {
 })();
 
 export const getNotes = () => getValue("#notes-textarea");
+
+export const getNotesFromProject = function(projectTitle) {
+    const project = getProjects()[getTitleIndexOf(projectTitle)];
+    return project.notes;
+}
