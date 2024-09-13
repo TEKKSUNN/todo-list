@@ -67,7 +67,7 @@ const createProjectCard = function(project) {
     const viewButton = createButton("view view-project", "");
     handleClick(() => showTasksDialog(project.title), viewButton);
     const addTaskButton = createButton("project-add-task", "");
-    handleClick(() => boolChoiceDialog("Do you want to add a task for this project?", showNewTaskForm), addTaskButton);
+    handleClick(() => boolChoiceDialog("Do you want to add a task for this project?", () => { showTasksDialog(project.title); showNewTaskForm() }), addTaskButton);
     const notesButton = createButton("project-notes", "");
     handleClick(() => showNotesDialog(project.title), notesButton);
     appendTo(buttons, notesButton, addTaskButton, viewButton);
