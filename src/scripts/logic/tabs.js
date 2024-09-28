@@ -22,9 +22,9 @@ const setEvents = function(...elements) {
 export default function getTabs() {
     const tabs = createDiv("tabs");
     const today = createTab("Today");
-    const thisWeek = createTab("This Week");
-    const thisMonth = createTab("This Month");
-    const thisYear = createTab("This Year");
+    const thisWeek = createTab("Past Week");
+    const thisMonth = createTab("Past Month");
+    const thisYear = createTab("Past Year");
     const allTime = createTab("All");
     setIds(today, thisWeek, thisMonth, thisYear, allTime);
     setEvents(today, thisWeek, thisMonth, thisYear, allTime);
